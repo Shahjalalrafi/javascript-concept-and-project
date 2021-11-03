@@ -13,8 +13,11 @@ document.querySelector(".check").addEventListener("click", function () {
 
     // win Match 
     } else if (guess === randomNumber) {
-        document.querySelector(".number").textContent = randomNumber
-        document.querySelector(".message").textContent = "You Win"
+        document.querySelector(".number").textContent = randomNumber;
+        document.querySelector(".message").textContent = "You Win";
+        document.querySelector("body").style.backgroundColor = "#60b347";
+        document.querySelector('.number').style.width = '30rem';
+
         if(score > highScore) {
             highScore = score
             document.querySelector(".highscore").textContent = highScore
@@ -31,5 +34,22 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".message").textContent = "number is Low"
         score--
         document.querySelector(".score").textContent = score
-    }
+    }else {
+        // document.querySelector('.message').textContent = '💥 You lost the game!';
+        document.querySelector(".message").textContent = '💥 You lost the game!'
+        document.querySelector('.score').textContent = 0;
+      }
+})
+
+
+document.querySelector(".again").addEventListener("click", function() {
+    score = 20;
+    randomNumber = Math.trunc(Math.random() * 20) + 1
+    console.log(randomNumber, score)
+
+    document.querySelector(".message").textContent = "start Guessing...";
+    document.querySelector(".score").textContent = score;
+
+    document.querySelector("body").style.backgroundColor = "#222";
+    document.querySelector('.number').style.width = '15rem';
 })
