@@ -117,3 +117,30 @@ h1 {
 .label-score {
   margin-bottom: 2rem;
 }
+
+
+
+
+
+/* svg */
+
+#male {
+    width: 30rem;
+}
+
+#female {
+    width: 20rem;
+}
+#baby {
+    width: 10rem;
+}
+
+#Female_Front_Lower, #Female_Front_Mid, #Female_Front_Upper, #Pediatric_Front_Upper, #Pediatric_Front_Mid, #Pediatric_Front_Lower, #Male_Front_Upper, #Male_Front_Mid, #Male_Front_Lower  {
+    fill: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#Female_Front_Lower:hover, #Female_Front_Mid:hover, #Female_Front_Upper:hover{
+    fill: rgb(167, 166, 136);
+}
