@@ -1,3 +1,4 @@
+// Inheritence with function constructor
 const Person = function(firstName, birthYear)  {
     this.firstName = firstName;
     this.birthYear = birthYear;
@@ -79,3 +80,21 @@ EV.prototype.accelerate = function() {
 const tesla = new EV("Tesla", 120, 23)
 
 tesla.accelerate()
+
+
+// Inheritence with Class constructor
+
+class PersonCl {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+
+    calcAge() {
+        console.log(`in 2031 you year will be ${2031 - this.birthYear}`);
+    }
+}
+
+const person1 = new PersonCl("rafi", 1999);
+
+person1.calcAge();
