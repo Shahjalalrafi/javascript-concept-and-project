@@ -91,10 +91,29 @@ class PersonCl {
     }
 
     calcAge() {
-        console.log(`in 2031 you year will be ${2031 - this.birthYear}`);
+        console.log(`in 2031 year, ${this.firstName} will be ${2031 - this.birthYear}`);
     }
 }
 
-const person1 = new PersonCl("rafi", 1999);
-
+const person1 = new PersonCl("rakib", 2003);
 person1.calcAge();
+
+
+class Students extends PersonCl {
+    constructor(firstName, birthYear, course) {
+        super(firstName, birthYear);
+        this.course = course;
+    }
+
+    intorduce() {
+        console.log(`i am ${this.firstName} and i study ${this.course}`);
+    }
+
+    calcAge() {
+        console.log(`in 2030 student ${this.firstName} will be ${2030 - this.birthYear} years old`);
+    }
+}
+
+const rafi = new Students("Rafi", 1999, "ELL");
+rafi.intorduce();
+rafi.calcAge();
