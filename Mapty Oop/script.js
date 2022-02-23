@@ -19,7 +19,7 @@ class App {
     constructor() {
         this._getPosition();
         form.addEventListener("submit", this._newWorkout.bind(this));
-        this._toggoleElevationField();
+        inputType.addEventListener("change", this._toggoleElevationField);
     }
 
     _getPosition() {
@@ -50,10 +50,8 @@ class App {
     }
 
     _toggoleElevationField() {
-        inputType.addEventListener("change", function () {
-            inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
+        inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
             inputCadence.closest(".form__row").classList.toggle("form__row--hidden");
-        })
     }
 
     _newWorkout(e) {
