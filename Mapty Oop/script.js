@@ -36,6 +36,22 @@ class Running extends Workout {
 }
 
 
+class Cycling extends Workout {
+    constructor(coords, distance, duration, elevation) {
+        super(coords, distance, duration);
+        this.elevation = elevation;
+    }
+
+    calcSpeed() {
+        this.speed = this.distance / (this.duration / 60);
+        this.speed;
+    }
+}
+
+const running1 = new Running([22, 91], 120, 25, 125);
+const cycling1 = new Cycling([22, 91], 500, 15, 525);
+
+console.log(running1, cycling1);
 
 class App {
     #map;
