@@ -108,6 +108,16 @@ class App {
         inputDistance.focus();
     }
 
+    _hideForm() {
+        // make input filed empty
+        inputCadence.value = inputDistance.value = inputDuration.value = inputElevation.value = "";
+
+        form.style.display = "none";
+        form.classList.add("hidden");
+
+        setTimeout(() => form.style.display = 'grid', 1000)
+    }
+
     _toggoleElevationField() {
         inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
         inputCadence.closest(".form__row").classList.toggle("form__row--hidden");
@@ -171,7 +181,7 @@ class App {
 
 
         // clear all input filed
-        inputCadence.value = inputDistance.value = inputDuration.value = inputElevation.value = "";
+        this._hideForm();
     }
 
     _renderWorkoutMarker(workout) {
@@ -190,7 +200,7 @@ class App {
     _renderWorkout(workout) {
         let html = `
             <li class="workout workout--${workout.type}" data-id="${workout.id}">
-            <h2 class="workout__title">Running on April 14</h2>
+            <h2 class="workout__title">Running on ${workout.description}</h2>
             <div class="workout__details">
                 <span class="workout__icon">${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️" }</span>
                 <span class="workout__value">${workout.distance}</span>
