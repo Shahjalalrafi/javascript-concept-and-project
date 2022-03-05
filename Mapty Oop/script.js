@@ -14,6 +14,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 class Workout {
     date = new Date();
     id = (Date.now() + "").slice(-10);
+    clicks = 0;
 
     constructor(coords, distance, duration) {
         this.coords = coords;
@@ -24,11 +25,14 @@ class Workout {
     _setDescription() {
         // prettier-ignore
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    
-        this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
-          months[this.date.getMonth()]
-        } ${this.date.getDate()}`;
-      }
+
+        this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${months[this.date.getMonth()]
+            } ${this.date.getDate()}`;
+    }
+
+    click() {
+        this.clicks++;
+    }
 }
 
 
@@ -65,20 +69,22 @@ class Cycling extends Workout {
     }
 }
 
-const running1 = new Running([22, 91], 120, 25, 125);
-const cycling1 = new Cycling([22, 91], 500, 15, 525);
+// const running1 = new Running([22, 91], 120, 25, 125);
+// const cycling1 = new Cycling([22, 91], 500, 15, 525);
 
-console.log(running1, cycling1);
+// console.log(running1, cycling1);
 
 class App {
     #map;
     #mapEvent;
     #workouts = [];
+    #mapZoomLevel = 13;
 
     constructor() {
         this._getPosition();
         form.addEventListener("submit", this._newWorkout.bind(this));
         inputType.addEventListener("change", this._toggoleElevationField);
+        containerWorkouts.addEventListener("click", this._moveToPopup.bind(this));
     }
 
     _getPosition() {
@@ -202,7 +208,7 @@ class App {
             <li class="workout workout--${workout.type}" data-id="${workout.id}">
             <h2 class="workout__title">Running on ${workout.description}</h2>
             <div class="workout__details">
-                <span class="workout__icon">${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️" }</span>
+                <span class="workout__icon">${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"}</span>
                 <span class="workout__value">${workout.distance}</span>
                 <span class="workout__unit">km</span>
             </div>
@@ -213,7 +219,7 @@ class App {
             </div>
         `
 
-        if(workout.type === "running") {
+        if (workout.type === "running") {
             html += `
                 <div class="workout__details">
                 <span class="workout__icon">⚡️</span>
@@ -229,7 +235,7 @@ class App {
             `
         }
 
-        if(workout.type === "cycling") {
+        if (workout.type === "cycling") {
             html += `
                 <div class="workout__details">
                 <span class="workout__icon">⚡️</span>
@@ -246,6 +252,22 @@ class App {
         }
 
         form.insertAdjacentHTML("afterend", html);
+    }
+
+    _moveToPopup(e) {
+        let workoutEl = e.target.closest(".workout");
+
+        if (!workoutEl) return;
+
+
+        const workout = this.#workouts.find(work => work.id === workoutEl.dataset.id);
+
+        this.#map.setView(workout.coords, this.#mapZoomLevel, {
+            animate: true,
+            pan: {
+                duration: 1,
+            },
+        })
     }
 }
 
