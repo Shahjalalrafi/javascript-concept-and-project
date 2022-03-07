@@ -296,6 +296,10 @@ class App {
             this._renderWorkout(work);
         })
     }
+
+    _reset() {
+        localStorage.removeItem("workouts");
+    }
 }
 
 
