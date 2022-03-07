@@ -19,9 +19,9 @@ Student.prototype.intorduce = function () {
     console.log(`this is ${this.firstName} and i study ${this.course}`);
 }
 
-const mike = new Student("mike", 2010, "CSE");
-mike.intorduce();
-mike.calcAge()
+// const mike = new Student("mike", 2010, "CSE");
+// mike.intorduce();
+// mike.calcAge()
 
 
 
@@ -52,7 +52,7 @@ Car.prototype.break = function () {
     console.log(`${this.make} is going at ${this.speed} km/h`);
 }
 
-const bmw = new Car("BMW", 120);
+// const bmw = new Car("BMW", 120);
 // bmw.accelerate();
 // bmw.break();
 // bmw.accelerate();
@@ -77,9 +77,9 @@ EV.prototype.accelerate = function () {
     console.log(`Tesla going at ${this.speed} km/h, with a charge of 22%`)
 }
 
-const tesla = new EV("Tesla", 120, 23)
+// const tesla = new EV("Tesla", 120, 23)
 
-tesla.accelerate()
+// tesla.accelerate()
 
 
 // Inheritence with Class constructor
@@ -95,8 +95,8 @@ class PersonCl {
     }
 }
 
-const person1 = new PersonCl("rakib", 2003);
-person1.calcAge();
+// const person1 = new PersonCl("rakib", 2003);
+// person1.calcAge();
 
 
 class Students extends PersonCl {
@@ -114,9 +114,9 @@ class Students extends PersonCl {
     }
 }
 
-const rafi = new Students("Rafi", 1999, "ELL");
-rafi.intorduce();
-rafi.calcAge();
+// const rafi = new Students("Rafi", 1999, "ELL");
+// rafi.intorduce();
+// rafi.calcAge();
 
 
 // Inheritence with Class : Object.create
@@ -142,10 +142,10 @@ StudentProto.intorduce = function () {
     console.log(`i am ${this.firstName} and i study ${this.course}`);
 }
 
-const tasib = Object.create(StudentProto)
+// const tasib = Object.create(StudentProto)
 
-tasib.init("Tasib", 2002, "English");
-tasib.intorduce();
+// tasib.init("Tasib", 2002, "English");
+// tasib.intorduce();
 
 
 
@@ -192,14 +192,14 @@ class Account {
     }
 }
 
-const account1 = new Account("Rafi", "BDT", 2221);
+// const account1 = new Account("Rafi", "BDT", 2221);
 
-account1.diposite(500);
-account1.diposite(300);
-account1.withdraw(700);
-account1.requestLoan(1500);
-console.log(account1.getMovements())
-console.log(account1)
+// account1.diposite(500);
+// account1.diposite(300);
+// account1.withdraw(700);
+// account1.requestLoan(1500);
+// console.log(account1.getMovements())
+// console.log(account1)
 
 
 
@@ -224,7 +224,7 @@ class CarCl {
     }
 }
 
-const allien = new Car("ALLIEN", 120);
+// const allien = new Car("ALLIEN", 120);
 
 
 
@@ -252,8 +252,8 @@ class EVCl extends CarCl {
 }
 
 
-const ferrari = new EVCl("FERRARI", 90, 23)
+// const ferrari = new EVCl("FERRARI", 90, 23)
 
-ferrari.accelerate().accelerate().accelerate().break().accelerate()
+// ferrari.accelerate().accelerate().accelerate().break().accelerate()
 
-console.log(ferrari)
+// console.log(ferrari)
