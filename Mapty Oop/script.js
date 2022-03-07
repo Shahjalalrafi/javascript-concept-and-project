@@ -81,7 +81,12 @@ class App {
     #mapZoomLevel = 13;
 
     constructor() {
+        // Get the position
         this._getPosition();
+
+        // Get workouts data from localstorage
+        this._getLocaleStorage();
+
         form.addEventListener("submit", this._newWorkout.bind(this));
         inputType.addEventListener("change", this._toggoleElevationField);
         containerWorkouts.addEventListener("click", this._moveToPopup.bind(this));
@@ -185,9 +190,11 @@ class App {
         // Render Workout list
         this._renderWorkout(workout);
 
-
         // clear all input filed
         this._hideForm();
+
+        // set workout to local storage
+        this._setLocaleStorage();
     }
 
     _renderWorkoutMarker(workout) {
@@ -267,6 +274,22 @@ class App {
             pan: {
                 duration: 1,
             },
+        })
+    }
+
+    _setLocaleStorage() {
+        localStorage.setItem("workouts", JSON.stringify(this.#workouts));
+    }
+
+    _getLocaleStorage() {
+        let data = JSON.parse(localStorage.getItem("workouts"));
+
+        if (!data) return
+
+        this.#workouts = data
+
+        this.#workouts.forEach(work => {
+            this._renderWorkout(work);
         })
     }
 }
