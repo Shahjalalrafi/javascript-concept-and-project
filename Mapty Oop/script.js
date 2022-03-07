@@ -100,7 +100,6 @@ class App {
 
     _loadMapPosition(position) {
         const { latitude, longitude } = position.coords;
-        console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
         let coords = [latitude, longitude];
 
@@ -159,9 +158,6 @@ class App {
 
             // Check if data is valid
             if (!validInputs(distance, duration, elevation) || !allPositive(distance, duration, elevation)) {
-                console.log(distance);
-                console.log(duration);
-                console.log(elevation);
                 return alert('Inputs have to be positive numbers!')
             }
 
@@ -174,9 +170,6 @@ class App {
 
             // Check if data is valid
             if (!validInputs(distance, duration, cadence) || !allPositive(distance, duration, cadence)) {
-                console.log(distance);
-                console.log(duration);
-                console.log(cadence);
                 return alert('Inputs have to be positive numbers!')
             }
 
@@ -185,8 +178,6 @@ class App {
 
         // add a new object to workout arrays
         this.#workouts.push(workout);
-        console.log(workout);
-        console.log(this.#workouts)
 
         // Render workout on map as marker
         this._renderWorkoutMarker(workout);
