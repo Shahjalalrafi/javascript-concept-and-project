@@ -257,3 +257,46 @@ class EVCl extends CarCl {
 // ferrari.accelerate().accelerate().accelerate().break().accelerate()
 
 // console.log(ferrari)
+
+
+
+// let arr = [];
+// console.log(arr.__proto__.concat.name);
+// console.log(arr.__proto__.hasOwnProperty("map"));
+
+
+// function A() {
+//     return(
+//         function hello() {
+//             console.log("hello")
+//         }
+//     )
+// }
+
+// console.log(A.prototype.__proto__)
+// console.log(A.__proto__.__proto__)
+// console.log(A.__proto__)
+
+let obj1 = {
+    name: "hello",
+    hello() {
+        console.log(this.name);
+    }
+}
+
+let obj2 = {
+    name: "obj2",
+    greetings() {
+        console.log(`i am from ${this.name}`)
+    }
+}
+
+let men = Object.create(obj1);
+men.age = 32;
+
+
+men.hello()
+console.log(men.age)
+
+// console.log(obj1.__proto__)
+// console.log(obj2.hasOwnProperty("name"))
