@@ -320,5 +320,12 @@ console.log(new Date('1900-10-10').lastYear())
 
 //#Bonus
 // Mofify .map() to print '🗺' at the end of each item.
-// console.log([1,2,3].map())
+Array.prototype.map = function() {
+    let arr = [];
+    for(let i = 0; i < this.length; i++) {
+        arr.push(this[i] + '🗺');
+    }
+    return arr
+}
+console.log([1,2,3].map())
 //1🗺, 2🗺, 3🗺
