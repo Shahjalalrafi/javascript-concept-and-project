@@ -314,7 +314,7 @@ Date.prototype.lastYear = function() {
     return this.getFullYear() -1
 }
 
-console.log(new Date('1900-10-10').lastYear())
+// console.log(new Date('1900-10-10').lastYear())
 //'1899'
 
 
@@ -327,5 +327,52 @@ Array.prototype.map = function() {
     }
     return arr
 }
-console.log([1,2,3].map())
+// console.log([1,2,3].map())
 //1🗺, 2🗺, 3🗺
+
+const Manush = function(name, age) {
+    this.name = name;
+    this.age = age;
+    console.log(this)
+}
+
+Manush.prototype.sayName = function() {
+    return `i am ${this.name}`
+}
+
+console.log(Manush.__proto__.__proto__)
+
+let rafi = new Manush("rafi", 13);
+
+// console.log(rafi.sayName());
+
+
+
+class Character {
+    constructor(name, weapon) {
+      this.name = name;
+      this.weapon = weapon;
+    }
+    attack() {
+      return 'atack with ' + this.weapon
+    }
+  }
+  //Polymorphism--
+  //Extend the Character class to have a Queen class. The output of the below code should be:
+
+  class Queen extends Character {
+      constructor(name, weapon, type) {
+        super(name, weapon);
+        this.type = type;
+      }
+
+      attack() {
+          console.log(super.attack())
+          return `I am the ${this.name} of ${this.type}, now bow down to me! `
+      }
+  }
+
+  const victoria = new Queen('Victoria', 'army', 'hearts'); // create a new instace with the queen having (name, weapon, type). Type inlcudes: 'hearts', 'clubs', 'spades', 'diamonds'
+  
+  console.log(victoria.attack()) // will console.log the attack() method in Character class AND will return another string: 'I am the Victoria of hearts, now bow down to me! '
+  
