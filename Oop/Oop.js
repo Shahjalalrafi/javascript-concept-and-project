@@ -310,8 +310,8 @@ men.age = 32;
 //#1
 //Date object => to have new method .lastYear() which shows you last year 'YYYY' format.
 
-Date.prototype.lastYear = function() {
-    return this.getFullYear() -1
+Date.prototype.lastYear = function () {
+    return this.getFullYear() - 1
 }
 
 // console.log(new Date('1900-10-10').lastYear())
@@ -320,9 +320,9 @@ Date.prototype.lastYear = function() {
 
 //#Bonus
 // Mofify .map() to print '🗺' at the end of each item.
-Array.prototype.map = function() {
+Array.prototype.map = function () {
     let arr = [];
-    for(let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
         arr.push(this[i] + '🗺');
     }
     return arr
@@ -330,17 +330,17 @@ Array.prototype.map = function() {
 // console.log([1,2,3].map())
 //1🗺, 2🗺, 3🗺
 
-const Manush = function(name, age) {
+const Manush = function (name, age) {
     this.name = name;
     this.age = age;
-    console.log(this)
+    // console.log(this)
 }
 
-Manush.prototype.sayName = function() {
+Manush.prototype.sayName = function () {
     return `i am ${this.name}`
 }
 
-console.log(Manush.__proto__.__proto__)
+// console.log(Manush.__proto__.__proto__)
 
 let rafi = new Manush("rafi", 13);
 
@@ -350,29 +350,72 @@ let rafi = new Manush("rafi", 13);
 
 class Character {
     constructor(name, weapon) {
-      this.name = name;
-      this.weapon = weapon;
+        this.name = name;
+        this.weapon = weapon;
     }
     attack() {
-      return 'atack with ' + this.weapon
+        return 'atack with ' + this.weapon
     }
-  }
-  //Polymorphism--
-  //Extend the Character class to have a Queen class. The output of the below code should be:
+}
+//Polymorphism--
+//Extend the Character class to have a Queen class. The output of the below code should be:
 
-  class Queen extends Character {
-      constructor(name, weapon, type) {
+class Queen extends Character {
+    constructor(name, weapon, type) {
         super(name, weapon);
         this.type = type;
-      }
+    }
 
-      attack() {
-          console.log(super.attack())
-          return `I am the ${this.name} of ${this.type}, now bow down to me! `
-      }
-  }
+    attack() {
+        console.log(super.attack())
+        return `I am the ${this.name} of ${this.type}, now bow down to me! `
+    }
+}
 
-  const victoria = new Queen('Victoria', 'army', 'hearts'); // create a new instace with the queen having (name, weapon, type). Type inlcudes: 'hearts', 'clubs', 'spades', 'diamonds'
-  
-  console.log(victoria.attack()) // will console.log the attack() method in Character class AND will return another string: 'I am the Victoria of hearts, now bow down to me! '
-  
+const victoria = new Queen('Victoria', 'army', 'hearts'); // create a new instace with the queen having (name, weapon, type). Type inlcudes: 'hearts', 'clubs', 'spades', 'diamonds'
+
+//   console.log(victoria.attack()) // will console.log the attack() method in Character class AND will return another string: 'I am the Victoria of hearts, now bow down to me! '
+
+
+
+
+// function User(email, password, language) {
+//     this.name = name;
+//     this.password = password;
+//     this.language = language;
+
+//     this.printPassword = () => {
+//         console.log(this.password);
+//     }
+// }
+
+// const createUser = new User("codeabcbanglades@gmail.com", "hicodeabc", "Bangla")
+
+// console.log(createUser);
+
+
+class User {
+    constructor(email, password, language) {
+        this.email = email;
+        this.password = password;
+        this.language = language;
+    }
+
+    get name() {
+        console.log(this.email.split("@")[0])
+    }
+
+    set name(value) {
+        const [prefix, suffix] = this.email.split("@")
+        this.email = value + "@" + suffix;
+    }
+
+    printPassword() {
+        console.log(this.password);
+    }
+}
+
+const createUser = new User("codeabcbanglades@gmail.com", "hicodeabc", "Bangla");
+
+createUser.name = "rafi"
+console.log(createUser);
