@@ -418,5 +418,4 @@ class User {
 const createUser = new User("codeabcbanglades@gmail.com", "hicodeabc", "Bangla");
 
 createUser.name = "rafi"
-
 console.log(createUser);
